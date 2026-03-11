@@ -1,63 +1,78 @@
 * {
     box-sizing: border-box;
-}
-
-html, body {
-    padding: 0;
     margin: 0;
-    min-height: 100%;
-    font-family: sans-serif; /* Mejora la legibilidad */
+    padding: 0;
 }
 
-/* Contenedor Principal */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
 #boxPadre {
+    display: flex;
+    flex-direction: column; /* Esto pone la izquierda ARRIBA y la derecha ABAJO */
     width: 100%;
-    display: flex; 
-    flex-direction: row;
-    flex-wrap: wrap; /* Permite que los elementos bajen en móviles */
+    align-items: center; /* Centra todo el contenido */
 }
 
-#boxLeft, #boxRight {
-    width: 50%;
-    min-height: 100vh;
+#boxLeft {
+    width: 100%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los inputs y etiquetas */
 }
 
-/* Ajustes de Texto y Títulos */
+#boxRight {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajustes de Títulos */
 h1 {
-    font-size: 2.5rem;
+    font-size: 32px;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 20px 0;
+    color: #333;
 }
 
-/* Formularios Flexibles */
+/* Etiquetas y Contenedores de Input */
 #boxLeft div {
     width: 100%;
-    max-width: 400px; /* Evita que crezcan demasiado en PC */
-    margin: 0 auto 20px auto;
+    max-width: 350px; /* Tamaño ideal para celulares */
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 label {
     font-size: 18px;
     font-weight: bold;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 input[type="text"], select {
-    width: 100%; /* Ocupa todo el ancho de su contenedor */
-    height: auto;
+    width: 100%;
+    height: 50px;
     border: 4px solid #06A4AF;
     background-color: white;
-    font-size: 18px;
-    border-radius: 25px;
-    padding: 12px;
-    margin: 0;
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 0 20px;
+    margin: 0; /* Eliminamos el margen izquierdo que causaba el error */
 }
 
-/* Botón Centrado */
+/* Botón Enviar */
 #boxBoton {
-    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 input[type="button"] {
@@ -68,64 +83,59 @@ input[type="button"] {
     border-radius: 100px;
     border: none;
     color: white;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-input[type="button"]:hover {
-    background-color: #047e86;
-}
-
-/* Carrusel y Código */
+/* Sección de abajo (Derecha) */
 #boxCarrusel {
     width: 100%;
-    height: 300px;
+    max-width: 400px;
+    height: 250px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 img {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: contain;
 }
 
 #boxCodigo {
+    width: 100%;
     text-align: center;
+    margin-top: 20px;
+    padding: 20px;
 }
 
-/* --- MEDIA QUERY PARA CELULARES --- */
-@media (max-width: 768px) {
-    #boxPadre {
-        flex-direction: column; /* Apila uno arriba del otro */
-    }
-
-    #boxLeft, #boxRight {
-        width: 100%; /* Ahora ocupan todo el ancho */
-        min-height: auto;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    /* El carrusel se puede ver más pequeño en móvil */
-    #boxCarrusel {
-        height: 200px;
-    }
-    
-    img {
-        height: 200px;
-    }
+#xd {
+    font-size: 24px !important;
+    display: block;
 }
 
-/* Estilos de Animación (se mantienen igual) */
+#codigo {
+    font-size: 28px;
+    color: #06A4AF;
+    margin-top: 10px;
+    word-break: break-all; /* Para que el código largo no se salga */
+}
+
+#reset {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #06A4AF;
+    font-weight: bold;
+}
+
+/* Animación del Carrusel */
 ul {
     display: flex;
     padding: 0;
-    animation: slide 40s infinite alternate ease-in-out;
     width: 800%;
+    animation: slide 30s infinite alternate ease-in-out;
 }
 
 li {
@@ -134,13 +144,6 @@ li {
 }
 
 @keyframes slide {
-    0% {margin-left: 0;}
-    12.5% {margin-left: 0;}
-    25% {margin-left: -100%;}
-    37.5% {margin-left: -200%;}
-    50% {margin-left: -300%;}
-    62.5% {margin-left: -400%;}
-    75% {margin-left: -500%;}
-    87.5% {margin-left: -600%;}
-    100% {margin-left: -700%;}
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-87.5%); }
 }
