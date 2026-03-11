@@ -1,98 +1,127 @@
-*{
+* {
     box-sizing: border-box;
 }
 
 html, body {
     padding: 0;
     margin: 0;
-    height: 100%;
+    min-height: 100%;
+    font-family: sans-serif; /* Mejora la legibilidad */
 }
 
-
+/* Contenedor Principal */
 #boxPadre {
     width: 100%;
-    height: 100%;
     display: flex; 
     flex-direction: row;
+    flex-wrap: wrap; /* Permite que los elementos bajen en móviles */
 }
 
-#boxLeft {
+#boxLeft, #boxRight {
     width: 50%;
-    height: 100%;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-#boxRight {
-    width: 50%;
-    height: 100%;
+/* Ajustes de Texto y Títulos */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-h1{
-    font-size: 50px;
-    margin-top: 10px;
+/* Formularios Flexibles */
+#boxLeft div {
+    width: 100%;
+    max-width: 400px; /* Evita que crezcan demasiado en PC */
+    margin: 0 auto 20px auto;
 }
 
 label {
-    font-size: 22px;
-    margin: auto 0 auto 50px;
+    font-size: 18px;
     font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
 }
 
-input, select{
-    width: 300px; 
+input[type="text"], select {
+    width: 100%; /* Ocupa todo el ancho de su contenedor */
     height: auto;
-    border: 5px solid #06A4AF;
+    border: 4px solid #06A4AF;
     background-color: white;
-    font-size: 20px;
-    border-radius: 50px;
-    padding: 10px;
-    text-align: left;
-    margin: 20px 0 20px 40px;
+    font-size: 18px;
+    border-radius: 25px;
+    padding: 12px;
+    margin: 0;
+}
+
+/* Botón Centrado */
+#boxBoton {
+    text-align: center;
 }
 
 input[type="button"] {
-    height: 40px;
-    width: 80px;
+    height: 50px;
+    width: 150px;
     background-color: #06A4AF;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 100px;
     border: none;
-    padding: 10px;
     color: white;
-    text-align: center;
     font-weight: 700;
     cursor: pointer;
-    margin-left: 150px;
+    transition: background 0.3s;
 }
 
-#materia{
-    appearance: none;
-    padding-right: 40px;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306A4AF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 20px center;
-    background-size: 18px;
+input[type="button"]:hover {
+    background-color: #047e86;
 }
 
-#boxCodigo{
+/* Carrusel y Código */
+#boxCarrusel {
     width: 100%;
-    height: 30%;
-}
-
-#boxCarrusel{
-    background-color: white;
-    width: 100%;
-    height: 65%;
+    height: 300px;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 img {
     width: 100%;
-    height: 350px;
+    height: 300px;
     object-fit: contain;
-    object-position: center;
 }
 
-ul{
+#boxCodigo {
+    text-align: center;
+}
+
+/* --- MEDIA QUERY PARA CELULARES --- */
+@media (max-width: 768px) {
+    #boxPadre {
+        flex-direction: column; /* Apila uno arriba del otro */
+    }
+
+    #boxLeft, #boxRight {
+        width: 100%; /* Ahora ocupan todo el ancho */
+        min-height: auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* El carrusel se puede ver más pequeño en móvil */
+    #boxCarrusel {
+        height: 200px;
+    }
+    
+    img {
+        height: 200px;
+    }
+}
+
+/* Estilos de Animación (se mantienen igual) */
+ul {
     display: flex;
     padding: 0;
     animation: slide 40s infinite alternate ease-in-out;
@@ -101,12 +130,7 @@ ul{
 
 li {
     width: 100%;
-    height: 100%;
     list-style: none;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 @keyframes slide {
@@ -117,24 +141,6 @@ li {
     50% {margin-left: -300%;}
     62.5% {margin-left: -400%;}
     75% {margin-left: -500%;}
-    87.5% {margin-left: -600%;;}
+    87.5% {margin-left: -600%;}
     100% {margin-left: -700%;}
-}
-
-#xd {
-    text-align: center;
-    font-size: 40px;
-}
-
-#codigo {
-    text-align: center;
-    font-size: 35px;
-}
-
-#reset {
-    text-align: center;
-    font-size: 30px;
-    text-decoration: none;
-    color: #06A4AF;
-    font-weight: bold;
 }
