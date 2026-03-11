@@ -147,3 +147,5 @@ li {
     0% { transform: translateX(0); }
     100% { transform: translateX(-87.5%); }
 }
+
+optgroup + label{color: #06A4AF;}
